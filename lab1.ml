@@ -199,7 +199,10 @@ Invalid_argument exception for instance.
 ......................................................................*)
 
 let rec max_list (lst : int list) : int =
-  failwith "max_list not implemented" ;;
+  match lst with
+  | [] -> failwith "Invalid_argument"
+  | [x] -> x
+  | first :: second :: tail -> if first > second then max_list (first :: tail) else max_list (second :: tail);;
 
 (*......................................................................
 Exercise 9: Define a function zip, that takes two int lists and
