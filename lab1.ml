@@ -200,7 +200,7 @@ Invalid_argument exception for instance.
 
 let rec max_list (lst : int list) : int =
   match lst with
-  | [] -> failwith "Invalid_argument"
+  | [] -> raise (Invalid_argument "Can't find max of empty list!")
   | [x] -> x
   | first :: second :: tail -> if first > second then max_list (first :: tail) else max_list (second :: tail);;
 
