@@ -174,12 +174,12 @@ to the list containing the elements 3, 4, and 5? You'll want to
 replace the "[]" with the correct functional call.
 ......................................................................*)
 
-let square_all (lst : int list) : int list =
+let rec square_all (lst : int list) : int list =
   match lst with
   | [] -> []
-  | head :: tail -> head * head :: square_all tail ;;
+  | hd :: tl -> hd*hd :: square_all tl ;;
 
-let exercise6 = square_all [3, 4, 5] ;;
+let exercise6 = square_all [3 ; 4 ; 5] ;;
 
 (*......................................................................
 Exercise 7: Define a recursive function that sums an integer
@@ -196,7 +196,7 @@ can raise an appropriate exception -- a Match_failure or
 Invalid_argument exception for instance.
 ......................................................................*)
 
-let max_list (lst : int list) : int =
+let rec max_list (lst : int list) : int =
   failwith "max_list not implemented" ;;
 
 (*......................................................................
