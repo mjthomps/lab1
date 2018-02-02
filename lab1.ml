@@ -323,7 +323,7 @@ Exercise 11: Reimplement sum using fold_left, naming it sum_ho (for
 ......................................................................*)
 
 let sum_ho (lst : int list) : int =
-  failwith "sum_ho not implemented" ;;
+  List.fold_left (+) 0 lst ;;
 
 (*......................................................................
 Exercise 12: Reimplement prods using map.
