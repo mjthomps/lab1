@@ -258,8 +258,14 @@ let rec prods (lst : (int * int) list) : int list =
   | [] -> []
   | (x, y) :: tail -> (x * y) :: (prods tail) ;;
 
-let dotprod (a : int list) (b : int list) : int =
-  failwith "dotprod not implemented" ;;
+let rec dotprod (a : int list) (b : int list) : int =
+  if length a = length b then
+    match a, b with
+    | [], _l -> 0
+    | _f, [] -> 0
+    | ha :: ta, hb :: tb -> ha * hb + dotprod ta tb
+  else
+    raise (Invalid_argument "Need two lists of the same size");;
 
 (*======================================================================
 Part 4: High-order functional programming with map, filter, and fold
