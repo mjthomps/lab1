@@ -216,8 +216,19 @@ length lists, to just pad the shorter list with, say, false values, so
 that, zip [1] [2; 3; 4] = [(1, 2); (false, 3); (false, 4)]?
 ......................................................................*)
 
-let zip (x : int list) (y : int list) : (int * int) list =
-  failwith "zip not implemented" ;;
+let rec length (lst : int list) : int =
+  match lst with
+  | [] -> 0
+  | head :: tail -> 1 + length tail;;
+
+let rec zip (x : int list) (y : int list) : (int * int) list =
+  if length x = length y then
+    match x, y with
+    | [], _l -> []
+    | _f, [] -> []
+    | hx :: tx, hy :: ty -> (hx, hy) :: zip tx ty
+  else
+    raise (Invalid_argument "Need two lists of the same size");;
 
 (*.....................................................................
 Exercise 10: Recall the definition of the function prods from lecture
