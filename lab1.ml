@@ -330,7 +330,7 @@ Exercise 12: Reimplement prods using map.
 ......................................................................*)
 
 let prods_ho (lst : (int * int) list) : int list =
-  failwith "prods_ho not implemented" ;;
+  List.map (fun (x, y) -> x * y) lst;;
 
 (*......................................................................
 Exercise 13: The OCaml List module provides, in addition to the map,
@@ -342,7 +342,7 @@ two lists to form the result list. Use map2 to reimplement zip.
 ......................................................................*)
 
 let zip_ho (x : int list) (y : int list) : (int * int) list =
-  failwith "sum_ho not implemented" ;;
+  List.map2 (fun a b -> (a, b)) x y;;
 
 (*......................................................................
 Exercise 14: Define a function evens, using these higher-order
@@ -350,5 +350,5 @@ functional programming techniques, that returns a list of all of the
 even numbers in its argument list.
 ......................................................................*)
 
-let evens : int list -> int list =
-  fun _ -> failwith "evens not implemented" ;;
+let evens (lst : int list) : int list =
+  List.concat (List.map (fun (a, even) -> if even then [a] else []) (List.map (fun x -> (x, x mod 2 = 0)) lst));;
